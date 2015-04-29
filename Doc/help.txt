@@ -1,0 +1,57 @@
+/**
+* 触屏左右滑动效果
+* @param {HTMLElement} elem 放置内容的节点
+* @param {Object} o 其他参数
+* 
+* @config {[Number]} [speed] 速率 默认 300ms
+* @config {[Number]} [index] 初始化索引
+* @config {[String]} [createtag] 创建动画节点的标签名 默认 div
+* @config {[Boolean]} [loop] 是否需要重复滚动
+* @config {[Number]} [threshold] 滑动多少距离生效，默认 25px
+* @config {[Number]} [range] 滚动范围
+* @config {[Function]} [ready] 准备就绪的回调 接受this参数
+* @config {[Function]} [end] 每次滚动结束的回调 接受this参数
+* @config {[Function]} [resize] 窗口变化||横竖屏切换完成的回调 接受this参数
+* @config {[Boolean]} [auto] 是否自动滚动 默认 false 【慎用，手机端可能扛不住】
+* @config {[Boolean]} [height] 是否自动设置模块高度 默认 false 【分页高度不同时立刻修正模块的显示高度，避免按最高模块计算产生的空白区域】
+* @config {[String]} [ratio] 保证横竖屏切换时图片高度等比率缩放，另外，CSS中给图片及祖先元素设置100%高度，响应式宽度变化时高度等比率缩放 示例："ratio":"275/195"
+* @config {[Boolean]} [history] 是否需要记录浏览历史，默认为false 不记录
+* @config {[Number]} [suspend] 自动滚动时的间歇时间 默认 3000
+*/
+
+
+
+使用方法：
+TouchSlide ( elem, o )
+elem 必须项，可接受滑动节点的ID或者节点本身
+o 选择配置项，配置参数为上方 @config
+
+
+完全示例：
+   TouchSlide("boxscroll", {
+     "speed": 600,
+     "createtag": "div",
+     "index": 2,
+     "loop": true,
+     "threshold": 50,
+     "auto": false,
+     "height": true,
+     "suspend": 2000,
+     "ready":function(that){console.log("Ready", that.index)},
+     "end":function(that){console.log(that.index)},
+     "resize":function(that){console.log("Resize ok!")}
+   });
+以上大括号中的属性根据需要进行配置
+
+
+最简单的示例：
+  TouchSlide("boxscroll");
+
+
+
+注意：所有回调方法均接受一个参数，该参数为函数本身，可直接获取实例化后的所有参数
+
+
+
+
+

@@ -1,0 +1,89 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Touch Slide</title>
+<meta name="auther" content="F7" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<style>
+/*  Reset  */
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,cite,code,del,em,img,q,small,strong,sub,sup,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend { margin:0; padding:0; border:0; font-size:100%;}
+body { background:#fff; color:#000; font:12px simsun; text-align:center;}
+ol,ul { list-style:none;}
+cite,em,strong,th,h1,h2,h3,h4,h5,h6 { font-style:normal; font-weight:normal;}
+input,textarea,select,button,td { font-size:100%;}
+a { color:#000; text-decoration:none;}
+a:hover { color:#f00; text-decoration:underline;}
+.sepln { display:none;}
+
+
+#boxscroll { margin:50px auto; overflow:hidden; width:100%;}
+#boxscroll ul { float:left; background:#f2f2f2; padding:20px 0;}
+#boxscroll li { padding:0 20px; font:18px/40px "Microsoft YaHei"; text-align:left;}
+#boxscroll li a { display:block;}
+</style>
+</head>
+
+<body>
+
+<div id="boxscroll">
+  <ul>
+    <li><a href="/">1拉萨开往重庆列车车厢起火 被困隧道1小时图</a></li>
+    <li><a href="/webapp/">金铁霖新书述与彭丽媛师生缘 称其勤奋自律不服输图</a></li>
+    <li><a href="/china_login/m/login.html">印潜艇爆炸原因查明:水手误发两枚导弹炸沉潜艇图</a></li>
+    <li><a href="/china/plugin/Demo.html">亚青会:U14国足0-1不敌东帝汶 出线形势不佳</a></li>
+    <li><a href="/club_comment/demo/">美媒:中国去年有约3000人被执行死刑 数字大大降低</a></li>
+  </ul>
+  <ul>
+    <li><a href="/">2拉萨开往重庆列车车厢起火 被困隧道1小时图</a></li>
+    <li><a href="/webapp/">金铁霖新书述与彭丽媛师生缘 称其勤奋自律不服输图</a></li>
+    <li><a href="/china_login/m/login.html">印潜艇爆炸原因查明:水手误发两枚导弹炸沉潜艇图</a></li>
+    <li><a href="/china/plugin/Demo.html">亚青会:U14国足0-1不敌东帝汶 出线形势不佳</a></li>
+    <li><a href="/club_comment/demo/">美媒:中国去年有约3000人被执行死刑 数字大大降低</a></li>
+  </ul>
+  <ul>
+    <li><a href="/">3拉萨开往重庆列车车厢起火 被困隧道1小时图</a></li>
+    <li><a href="/webapp/">金铁霖新书述与彭丽媛师生缘 称其勤奋自律不服输图</a></li>
+    <li><a href="/china_login/m/login.html">印潜艇爆炸原因查明:水手误发两枚导弹炸沉潜艇图</a></li>
+    <li><a href="/china/plugin/Demo.html">亚青会:U14国足0-1不敌东帝汶 出线形势不佳</a></li>
+    <li><a href="/club_comment/demo/">美媒:中国去年有约3000人被执行死刑 数字大大降低</a></li>
+  </ul>
+  <ul>
+    <li><a href="/">4拉萨开往重庆列车车厢起火 被困隧道1小时图</a></li>
+    <li><a href="/webapp/">金铁霖新书述与彭丽媛师生缘 称其勤奋自律不服输图</a></li>
+    <li><a href="/china_login/m/login.html">印潜艇爆炸原因查明:水手误发两枚导弹炸沉潜艇图</a></li>
+    <li><a href="/china/plugin/Demo.html">亚青会:U14国足0-1不敌东帝汶 出线形势不佳</a></li>
+    <li><a href="/club_comment/demo/">美媒:中国去年有约3000人被执行死刑 数字大大降低</a></li>
+  </ul>
+</div>
+<!-- test -->
+<div id="count"></div>
+哈
+<div class="test">
+  <input type="button" value="Range" onclick="ss.moveAnalysis(60);" />
+  <br />1<br />
+  <input type="button" value="上一页" onclick="ss.prev();" />
+  <br />1<br />
+  <input type="button" value="下一页" onclick="ss.next();" />
+  <br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />
+</div>
+
+<script src="src/touchSlide.1.0.5.js"></script>
+
+<script>
+var ss = new TouchSlide("boxscroll", {
+  "speed": 200,
+  "createtag": "div",
+  //"index": 2,
+  //"loop": true,
+  "threshold": 50,
+  "auto": false,
+  "suspend": 2000,
+  "history": true,
+  "ready":function(that){console.log("Ready", that.index, that.zoom)},
+  "end":function(that){console.log(that.index)},
+  "resize":function(that){console.log("Resize ok!")}
+});
+</script>
+</body>
+</html>

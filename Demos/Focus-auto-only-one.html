@@ -1,0 +1,100 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Touch Slide</title>
+<meta name="auther" content="F7" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<style>
+/*  Reset  */
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,cite,code,del,em,img,q,small,strong,sub,sup,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend { margin:0; padding:0; border:0; font-size:100%;}
+body { background:#fff; color:#000; font:12px simsun; text-align:center;}
+ol,ul { list-style:none;}
+cite,em,strong,th,h1,h2,h3,h4,h5,h6 { font-style:normal; font-weight:normal;}
+input,textarea,select,button,td { font-size:100%;}
+a { color:#000; text-decoration:none;}
+a:hover { color:#f00; text-decoration:underline;}
+.sepln { display:none;}
+
+h1 { font:24px/40px "Microsoft YaHei";}
+
+
+#focus { margin:50px auto 0; width:100%; overflow:hidden; max-height:400px; overflow:hidden;}
+.focus-item { float:left; position:relative; width:100%;}
+.focus-item img { display:block; width:100%; max-height:400px;}
+.focus-title { font:16px/34px "Microsoft YaHei"; text-align:left; background:rgba(0, 0, 0, .7); position:absolute; width:100%; bottom:0; left:0; height:34px; overflow:hidden;}
+.focus-title a { color:#fff; padding:0 10px;}
+#focusDot { text-align:center; padding:10px 0 20px;}
+#focusDot em { display:inline-block; width:16px; height:16px; text-align:left; text-indent:-999em; overflow:hidden; background:#999; margin:0 4px; border-radius:16px; -webkit-border-radius:16px; -moz-border-radius:16px; -o-border-radius:16px;}
+#focusDot .current { background:#e4393c;}
+</style>
+</head>
+
+<body>
+<br /><br />
+<h1>焦点图模式--自动滚动【仅一个循环后停止，一旦发生手动滑屏将立刻停止自动滚动】</h1>
+<div id="focus">
+  <div class="focus-item">
+    <div class="focus-photo"><a href="http://news.china.com/hd/11127798/20130823/18011179.html"><img src="http://www.china.com/zh_cn/tu_image/2013/0823/4top_2145_1377236596.jpg" /></a></div>
+    <div class="focus-title"><a href="http://news.china.com/hd/11127798/20130823/18011179.html">薄熙来在北京的一处住宅外景曝光</a></div>
+  </div>
+  <div class="focus-item">
+    <div class="focus-photo"><a href="http://sports.china.com/pics/11127800/20130823/18011300.html"><img src="http://www.china.com/zh_cn/tu_image/2013/0823/2top_2146_1377220646.jpg" /></a></div>
+    <div class="focus-title"><a href="http://sports.china.com/pics/11127800/20130823/18011300.html">盘点少林绝技:水上漂+头碎板砖+电钻扎脑</a></div>
+  </div>
+  <div class="focus-item">
+    <div class="focus-photo"><a href="http://ent.china.com/hd/11127584/20130823/18011066.html"><img src="http://www.china.com/zh_cn/tu_image/2013/0823/3top_2147_1377221999.jpg" /></a></div>
+    <div class="focus-title"><a href="http://ent.china.com/hd/11127584/20130823/18011066.html">王祖贤亮相 脸部发胖走样似整容失败</a></div>
+  </div>
+  <div class="focus-item">
+    <div class="focus-photo"><a href="http://tech.china.com/news/company/international/11066130/20130823/18011468.html"><img src="http://www.china.com/zh_cn/tu_image/2013/0823/3top_2148_1377222173.jpg" /></a></div>
+    <div class="focus-title"><a href="http://tech.china.com/news/company/international/11066130/20130823/18011468.html">传大量苹果员工向其它企业投递简历</a></div>
+  </div>
+  <div class="focus-item">
+    <div class="focus-photo"><a href="http://auto.china.com/specia/2013chengdu/"><img src="http://www.china.com/zh_cn/tu_image/2013/0823/2top_2149_1377231490.jpg" /></a></div>
+    <div class="focus-title"><a href="http://auto.china.com/specia/2013chengdu/">成都车展上市新车一览</a></div>
+  </div>
+  <div class="focus-item">
+    <div class="focus-photo"><a href="http://game.china.com/industry/news/11011446/20130823/18011565.html"><img src="http://www.china.com/zh_cn/tu_image/2013/0823/2top_2150_1377227659.jpg" /></a></div>
+    <div class="focus-title"><a href="http://game.china.com/industry/news/11011446/20130823/18011565.html">怀念偷菜岁月“开心农场”停止运营</a></div>
+  </div>
+</div>
+<div id="focusDot"></div>
+
+
+
+
+<script src="../src/touchSlide.min.js"></script>
+
+<script>
+new TouchSlide("focus", {
+  "auto": true,
+  "ready":function(that){
+    var _dot,
+        elem = document.getElementById("focusDot");
+    for ( var i=0,l=that.items.length; i<l; i++ ) {
+      _dot = document.createElement("em");
+      _dot.innerHTML = i;
+      elem.appendChild(_dot);
+      (function(i){
+        _dot.onclick = function(){
+          clearTimeout(that.timer);
+          that.action();
+          that.goto(i)
+        };
+      })(i);
+    };
+    elem.getElementsByTagName("em")[0].className = "current";
+  },
+  "end":function(that){
+    var elem = document.getElementById("focusDot"),
+        ems = elem.getElementsByTagName("em");
+    for ( var i=0,l=ems.length; i<l; i++ ) {
+      ems[i].className = "";
+    };
+    ems[that.index].className = "current";
+  }
+});
+</script>
+</body>
+</html>
